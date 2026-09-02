@@ -36,7 +36,16 @@ export default function About() {
 
           <div className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={220}>
-              <span className="text-[13px] font-medium uppercase tracking-widest2 text-ink/65">Education</span>
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="text-[13px] font-medium uppercase tracking-widest2 text-ink/65">Education</span>
+                <a
+                  href={profile.cvUrl}
+                  download
+                  className="whitespace-nowrap text-[13px] font-medium text-rose-600 underline-offset-4 transition-colors hover:text-rose-700 hover:underline"
+                >
+                  Download CV
+                </a>
+              </div>
               <div className="mt-6 flex flex-col gap-8">
                 {education.map((item) => (
                   <div key={item.school} className="border-t border-line pt-6">
@@ -48,11 +57,15 @@ export default function About() {
                       width={144}
                       height={36}
                     />
-                    <p className="mt-4 text-[13px] font-medium uppercase tracking-wide text-ink/65">
-                      {item.school} · {item.country}
-                    </p>
+                    <div className="mt-4 flex items-baseline justify-between gap-3">
+                      <p className="text-[13px] font-medium uppercase tracking-wide text-ink/65">
+                        {item.school} · {item.country}
+                      </p>
+                      <p className="shrink-0 text-[13px] text-ink/65">{item.years}</p>
+                    </div>
                     <p className="mt-2 font-display text-lg text-ink">{item.degree}</p>
-                    <p className="mt-1 text-sm text-ink/65">{item.major}</p>
+                    {item.major && <p className="mt-1 text-sm text-ink/65">{item.major}</p>}
+                    {item.note && <p className="mt-2 text-sm italic leading-relaxed text-ink/60">{item.note}</p>}
                   </div>
                 ))}
               </div>

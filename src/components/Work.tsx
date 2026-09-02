@@ -15,17 +15,25 @@ function ProjectBlock({ project, reversed }: { project: Project; reversed: boole
             </h3>
           </div>
           <div className={`sm:col-span-4 ${reversed ? 'sm:order-1 sm:col-start-1' : 'sm:col-start-9'}`}>
-            <p className="text-[13px] font-medium uppercase tracking-widest2 text-ink/65">Role</p>
-            <p className="mt-1.5 text-ink/80">{project.role}</p>
-            <p className="mt-5 text-[13px] font-medium uppercase tracking-widest2 text-ink/65">Overview</p>
+            {project.role && (
+              <>
+                <p className="text-[13px] font-medium uppercase tracking-widest2 text-ink/65">Role</p>
+                <p className="mt-1.5 text-ink/80">{project.role}</p>
+              </>
+            )}
+            <p className={`text-[13px] font-medium uppercase tracking-widest2 text-ink/65 ${project.role ? 'mt-5' : ''}`}>
+              Overview
+            </p>
             <p className="mt-1.5 leading-relaxed text-ink/70">{project.overview}</p>
           </div>
         </div>
       </Reveal>
 
-      <Reveal delay={120} className="mt-10 sm:mt-12">
-        <ProjectGallery images={project.images} featuredIndex={project.featuredIndex} />
-      </Reveal>
+      {project.images.length > 0 && (
+        <Reveal delay={120} className="mt-10 sm:mt-12">
+          <ProjectGallery images={project.images} featuredIndex={project.featuredIndex} />
+        </Reveal>
+      )}
     </article>
   )
 }

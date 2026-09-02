@@ -1,21 +1,21 @@
-// All copy below is sourced directly from Trang Ngoc Le's personal portfolio PDF.
+// All copy below is sourced directly from Trang Ngoc Le's personal portfolio and CV PDFs.
 // Nothing here is invented — figures, clients, and descriptions are reused as provided.
 
 export const profile = {
   name: 'Trang Ngoc Le',
   role: 'Marketing Executive',
-  location: 'Padova, Italy',
-  heroLine: 'Marketing planning, digital branding, CRM and strategic communication — across Asia and Europe.',
-  intro: `I'm a marketing professional with experience across Asia and Europe, specializing in
-marketing planning, digital branding, CRM, and strategic communication.`,
-  introSecondary: `My work combines business logic, consumer psychology, and innovative digital
-tools to create marketing strategies that strengthen brand identity, grow audiences, and support
-sustainable business impact.`,
+  location: 'Venice, Italy',
+  heroLine: 'Marketing Executive with 5+ years of experience in integrated marketing communications and growth-driven campaigns.',
+  intro: `Marketing Executive with 5+ years of experience in the automotive and consumer
+services industry, specializing in integrated marketing communications, growth-driven
+campaigns, and cross-functional go-to-market execution.`,
+  introSecondary: `Proven track record leading nationwide campaigns across digital, social, PR,
+events, and dealer networks — delivering measurable impact through data-driven planning and
+budget optimization, with a strong interest in sustainable mobility and digital transformation.`,
   email: 'tranglengoc.03@gmail.com',
-  phone: '+39 351 3714399',
-  phoneHref: '+393513714399',
-  linkedin: 'linkedin.com/in/ngoc-trang-le',
-  linkedinHref: 'https://linkedin.com/in/ngoc-trang-le',
+  linkedin: 'linkedin.com/in/trangngocle',
+  linkedinHref: 'https://linkedin.com/in/trangngocle/',
+  cvUrl: '/files/trang-ngoc-le-cv.pdf',
 }
 
 export const education = [
@@ -24,13 +24,16 @@ export const education = [
     country: 'Italy',
     degree: 'Master of Management for Sustainable Firms',
     major: 'Major in Marketing and Digital Transformation',
+    years: '2023 – 2025',
+    note: 'Master Thesis: "Digital Branding and Sustainable Business Models: The Case of the Automotive Sector"',
     logo: '/images/padova_logo.webp',
   },
   {
     school: 'La Trobe University',
     country: 'Australia',
-    degree: 'Bachelor of Business Administration (BBA)',
-    major: 'Major in Financial Management and Marketing',
+    degree: 'Bachelor of Financial Management and Marketing',
+    years: '2015 – 2019',
+    note: 'Award: La Trobe Star Scholarship for talented student',
     logo: '/images/latrobe_logo.webp',
   },
 ]
@@ -42,30 +45,84 @@ export const expertise = [
   { label: 'ESG Communication', since: '2023' },
 ]
 
-export const experience = [
+export type Job = {
+  company: string
+  role: string
+  period: string
+  logo?: string
+  points: string[]
+}
+
+export const experience: Job[] = [
+  {
+    company: 'Language Link Vietnam',
+    role: 'Product Marketing Team Leader',
+    period: 'Jan – Apr 2026',
+    points: [
+      'Planned and executed integrated product marketing campaigns (digital, events, local activations) to drive lead generation and conversion',
+      'Managed and optimized performance campaigns across paid media (Google Ads, Meta Ads) — content, landing pages, and A/B testing to improve CPL, CTR and CVR',
+      'Monitored key metrics (lead quality, CPL, ROI) and delivered weekly performance reports with actionable insights',
+      'Executed local marketing initiatives, events, partnerships and POSM production, coordinating budget and external vendors',
+    ],
+  },
   {
     company: 'Yamaha Motor Vietnam',
-    role: 'Sales Admin & Marketing Executive',
+    role: 'Marketing Executive',
+    period: '2020 – 2023',
     logo: '/images/yamaha_logo.webp',
     points: [
-      'Led full-cycle B2C marketing plans across PR, social media, events & digital channels',
-      'Drove 10% organic audience growth and stable cross-channel engagement',
-      'Managed 50+ nationwide campaigns, achieving 55% conversion from marketing leads',
-      'Oversaw P&L reporting, forecasting, budget optimization',
+      'Led planning and execution of 50+ nationwide integrated marketing campaigns across PR, digital, social media, dealer activations and events for three product lines',
+      'Coordinated cross-functional teams (Sales Planning, Dealer Network, Marketing) to align campaign strategy with sales objectives',
+      'Achieved 10% organic audience growth and drove 55% conversion from marketing leads to purchase inquiries',
+      'Managed marketing P&L and annual campaign budgets, delivering monthly forecasts and performance recommendations',
     ],
   },
   {
     company: 'CJ CGV Vietnam',
     role: 'Marketing Operation Supervisor',
+    period: '2019 – 2020',
     logo: '/images/cjcgv_logo.webp',
     points: [
-      'Organized nationwide movie premiere events & indoor marketing campaigns',
-      'Optimized operation workflows → contributed to 40% revenue increase (Q1 2019)',
-      'Led hiring, training & management of part-time staff',
-      'Produced detailed weekly analytics on footfall, sales & event ROI',
+      'Led execution of nationwide movie premiere events and customer engagement campaigns',
+      'Managed 30+ part-time staff for operations and marketing activities during high-traffic periods',
+      'Analyzed ticket sales and concession performance to optimize promotional campaigns',
+      'Contributed to 40% revenue growth in Q1 through improved marketing activities and operational workflows',
+    ],
+  },
+  {
+    company: 'Fit City & Baba Yoga Studio',
+    role: 'Sale & Marketing Specialist',
+    period: '2017 – 2019',
+    points: [
+      'Coordinated partner communications and cross-brand campaigns',
+      'Designed integrated communication plans',
+      'Implemented customer retention initiatives and membership campaigns',
     ],
   },
 ]
+
+export const skills = {
+  technical: [
+    { category: 'CRM', items: 'Salesforce (Sales Cloud, Marketing Cloud)' },
+    { category: 'Analytics', items: 'Power BI, Excel' },
+    { category: 'Marketing Platforms', items: 'Google Ads, Meta Ads, Zalo Ads, Email Marketing' },
+    { category: 'Design', items: 'Canva' },
+  ],
+  soft: [
+    'Project Management',
+    'Planning & Forecasting',
+    'Budget Management',
+    'Reporting & Analysis',
+    'Social Media Marketing',
+    'Multitasking',
+    'Teamwork & Self-management',
+  ],
+  languages: [
+    { name: 'English', level: 'C1' },
+    { name: 'Italian', level: 'A2' },
+    { name: 'Vietnamese', level: 'Native' },
+  ],
+}
 
 export type ProjectImage = { src: string; alt: string; orientation: 'portrait' | 'landscape' | 'square' }
 
@@ -73,7 +130,7 @@ export type Project = {
   index: string
   client: string
   title: string
-  role: string
+  role?: string
   overview: string
   images: ProjectImage[]
   featuredIndex?: number
@@ -107,9 +164,10 @@ export const projects: Project[] = [
   {
     index: '03',
     client: 'Salesforce CRM',
-    title: 'PwC MOTIO Project',
+    title: 'PwC Italy Case Study',
     role: 'Salesforce Platform Analyst',
-    overview: 'Hands-on work with Sales Cloud & Marketing Cloud in a real-case scenario with MOTIO scooters.',
+    overview:
+      'Applied Sales Cloud & Marketing Cloud for customer lifecycle management, designing CRM workflows and reporting dashboards in a real-case scenario with MOTIO scooters.',
     images: [
       { src: '/images/motto_2.webp', alt: 'MOTIO lead management process map from Sales Cloud & Marketing Cloud work', orientation: 'landscape' },
       { src: '/images/motto_1.webp', alt: 'MOTIO re-engagement email template mockup', orientation: 'portrait' },
@@ -131,18 +189,32 @@ export const projects: Project[] = [
       { src: '/images/yamaha_5.webp', alt: 'Yamaha Janus lifestyle promotional posts', orientation: 'square' },
     ],
   },
+  {
+    index: '05',
+    client: 'IBM Watson',
+    title: 'AIaaS Project',
+    overview: 'Designed a digital product-service innovation framework as part of an applied strategic project.',
+    images: [],
+  },
 ]
 
 export const certificates = [
   {
     name: 'Google Ads Search Certification',
-    issuer: 'Google',
+    issuer: 'Google Skillshop',
+    year: '2025',
     image: '/images/google_ads_search_certification.webp',
   },
   {
     name: 'Inbound Marketing Certified',
     issuer: 'HubSpot Academy',
+    year: '2025',
     image: '/images/inbound_marketing_certification.webp',
+  },
+  {
+    name: 'Salesforce Trailhead — Marketing Cloud Basics',
+    issuer: 'Salesforce',
+    year: '2025',
   },
 ]
 

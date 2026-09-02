@@ -30,22 +30,25 @@ export default function Contact() {
                 >
                   {profile.linkedin}
                 </a>
-                <a
-                  href={`tel:${profile.phoneHref}`}
-                  className="w-fit border-b border-transparent text-ink/80 transition-colors hover:border-rose-500 hover:text-rose-500"
-                >
-                  {profile.phone}
-                </a>
               </div>
             </Reveal>
 
             <Reveal delay={220}>
-              <a
-                href={`mailto:${profile.email}`}
-                className="mt-12 inline-block rounded-full bg-ink px-8 py-4 text-[13px] font-medium uppercase tracking-widest text-paper transition-colors hover:bg-rose-600"
-              >
-                Say hello
-              </a>
+              <div className="mt-12 flex flex-wrap items-center gap-5">
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="inline-block rounded-full bg-ink px-8 py-4 text-[13px] font-medium uppercase tracking-widest text-paper transition-colors hover:bg-rose-600"
+                >
+                  Say hello
+                </a>
+                <a
+                  href={profile.cvUrl}
+                  download
+                  className="inline-block rounded-full border border-ink/20 px-8 py-4 text-[13px] font-medium uppercase tracking-widest text-ink transition-colors hover:border-rose-500 hover:text-rose-500"
+                >
+                  Download CV
+                </a>
+              </div>
             </Reveal>
           </div>
 
