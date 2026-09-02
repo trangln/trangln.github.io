@@ -4,7 +4,7 @@
 export const profile = {
   name: 'Trang Ngoc Le',
   role: 'Marketing Executive',
-  location: 'Venice, Italy',
+  location: 'Helsinki, Finland',
   heroLine: 'Marketing Executive with 5+ years of experience in integrated marketing communications and growth-driven campaigns.',
   intro: `Marketing Executive with 5+ years of experience in the automotive and consumer
 services industry, specializing in integrated marketing communications, growth-driven
