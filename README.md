@@ -26,3 +26,4 @@ components. Images live in `public/images/` as optimized WebP files.
 Pushing to `main` builds the site and deploys it to GitHub Pages via
 `.github/workflows/deploy.yml`. In the repo settings, under **Pages**, set the source to
 **GitHub Actions** (one-time setup) — the site is then served at `https://trangln.github.io/`.
+
