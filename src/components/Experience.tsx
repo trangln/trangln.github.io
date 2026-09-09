@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import CertLogo from './CertLogo'
 import { certificates, experience, skills } from '../data/content'
 
 export default function Experience() {
@@ -22,20 +23,20 @@ export default function Experience() {
                   isRightCol && isFirstRow ? 'lg:border-t-0 lg:pt-0' : ''
                 }`}
               >
-                <div className="h-8">
+                <div className="flex items-center gap-4">
                   {job.logo && (
                     <img
                       src={job.logo}
                       alt={`${job.company} logo`}
-                      className="h-8 w-auto object-contain object-left"
+                      className="h-14 w-14 shrink-0 object-contain object-left"
                       loading="lazy"
-                      width={128}
-                      height={32}
+                      width={56}
+                      height={56}
                     />
                   )}
+                  <h3 className="font-display text-2xl text-ink">{job.company}</h3>
                 </div>
-                <h3 className="mt-6 font-display text-2xl text-ink">{job.company}</h3>
-                <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                   <p className="text-[15px] font-medium text-rose-600">{job.role}</p>
                   <p className="text-sm text-ink/65">{job.period}</p>
                 </div>
@@ -82,7 +83,7 @@ export default function Experience() {
               {skills.languages.map((lang) => (
                 <li key={lang.name} className="flex items-baseline gap-2 text-sm">
                   <span className="font-medium text-ink">{lang.name}</span>
-                  <span className="text-ink/65">— {lang.level}</span>
+                  <span className="text-ink/65">· {lang.level}</span>
                 </li>
               ))}
             </ul>
@@ -94,20 +95,7 @@ export default function Experience() {
           <div className="mt-6 flex flex-wrap gap-x-10 gap-y-5">
             {certificates.map((cert) => (
               <div key={cert.name} className="flex items-center gap-4">
-                {cert.image ? (
-                  <img
-                    src={cert.image}
-                    alt={`${cert.name} badge`}
-                    className="h-12 w-16 border border-line object-cover"
-                    loading="lazy"
-                    width={64}
-                    height={48}
-                  />
-                ) : (
-                  <div className="flex h-12 w-16 shrink-0 items-center justify-center border border-line text-center text-[10px] font-medium uppercase leading-tight tracking-wide text-ink/65">
-                    {cert.issuer}
-                  </div>
-                )}
+                <CertLogo issuer={cert.issuer} />
                 <div>
                   <p className="text-sm font-medium text-ink">{cert.name}</p>
                   <p className="text-sm text-ink/65">

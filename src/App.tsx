@@ -5,6 +5,7 @@ import Work from './components/Work'
 import Services from './components/Services'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
+import BackToTop from './components/BackToTop'
 
 export default function App() {
   return (
@@ -19,11 +20,12 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <Work />
         <Services />
         <Experience />
+        <Work />
         <Contact />
       </main>
+      <BackToTop />
     </>
   )
 }

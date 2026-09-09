@@ -1,59 +1,53 @@
 import type { ProjectImage } from '../data/content'
 
-function Tile({ image, priority = false }: { image: ProjectImage; priority?: boolean }) {
-  return (
-    <img
-      src={image.src}
-      alt={image.alt}
-      loading={priority ? 'eager' : 'lazy'}
-      className="mb-4 w-full break-inside-avoid border border-line/70 object-cover align-bottom last:mb-0"
-    />
-  )
+// Uniform square tiles, packed as square as possible: roughly sqrt(n) columns,
+// stretching the last row's tiles to fill any leftover slots so the montage
+// always ends up a clean rectangle instead of a ragged grid. Used for 4+
+// photos only - 3 or fewer stack vertically instead (see ProjectGallery).
+function layout(n: number) {
+  const cols = Math.min(5, Math.ceil(Math.sqrt(n)))
+  const rows = Math.ceil(n / cols)
+  const lastRowCount = n - cols * (rows - 1)
+  const base = Math.floor(cols / lastRowCount)
+  const extra = cols % lastRowCount
+  return { cols, lastRowStart: n - lastRowCount, base, extra }
 }
 
-export default function ProjectGallery({
-  images,
-  featuredIndex = 0,
-}: {
-  images: ProjectImage[]
-  featuredIndex?: number
-}) {
-  const featured = images[featuredIndex]
-  const rest = images.filter((_, i) => i !== featuredIndex)
-
-  if (images.length === 1) {
+export default function ProjectGallery({ images }: { images: ProjectImage[] }) {
+  if (images.length <= 3) {
     return (
-      <div className="mx-auto max-w-2xl">
-        <Tile image={featured} priority />
-      </div>
-    )
-  }
-
-  // A richer set of secondary images, or a wide featured shot, reads better
-  // stacked full-width than squeezed into a narrow side column.
-  if (rest.length >= 4 || featured.orientation === 'landscape') {
-    return (
-      <div>
-        <Tile image={featured} priority />
-        <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
-          {rest.map((img) => (
-            <Tile key={img.src} image={img} />
-          ))}
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-      <div className="md:col-span-3">
-        <Tile image={featured} priority />
-      </div>
-      <div className={rest.length > 1 ? 'columns-2 gap-4 md:col-span-2' : 'md:col-span-2'}>
-        {rest.map((img) => (
-          <Tile key={img.src} image={img} />
+      <div className="flex gap-2">
+        {images.map((image, i) => (
+          <img
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            className="w-0 flex-1 border border-line/70"
+          />
         ))}
       </div>
+    )
+  }
+
+  const { cols, lastRowStart, base, extra } = layout(images.length)
+
+  return (
+    <div className="grid gap-1.5" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+      {images.map((image, i) => {
+        const posInLastRow = i - lastRowStart
+        const span = i >= lastRowStart ? base + (posInLastRow < extra ? 1 : 0) : 1
+        return (
+          <img
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            className="aspect-square w-full border border-line/70 object-cover"
+            style={{ gridColumn: `span ${span}` }}
+          />
+        )
+      })}
     </div>
   )
 }

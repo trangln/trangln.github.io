@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-paper: 246 244 241;
+    --color-ink: 33 29 27;
+    --color-muted: 122 115 108;
+    --color-line: 228 223 217;
+  }
+
+  .dark {
+    --color-paper: 30 30 30;
+    --color-ink: 237 237 237;
+    --color-muted: 163 163 163;
+    --color-line: 58 58 58;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -22,7 +36,7 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans antialiased;
+    @apply bg-paper text-ink font-sans antialiased transition-colors duration-300;
   }
 
   ::selection {

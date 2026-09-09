@@ -31,7 +31,7 @@ function ProjectBlock({ project, reversed }: { project: Project; reversed: boole
 
       {project.images.length > 0 && (
         <Reveal delay={120} className="mt-10 sm:mt-12">
-          <ProjectGallery images={project.images} featuredIndex={project.featuredIndex} />
+          <ProjectGallery images={project.images} />
         </Reveal>
       )}
     </article>
@@ -43,9 +43,9 @@ export default function Work() {
     <section id="work" className="py-24 sm:py-32">
       <div className="mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         <Reveal>
-          <span className="text-[13px] font-medium uppercase tracking-widest2 text-rose-600">Sample Projects</span>
+          <span className="text-[13px] font-medium uppercase tracking-widest2 text-rose-600">Work</span>
           <h2 className="mt-5 max-w-2xl font-display text-4xl leading-[1.05] text-ink sm:text-5xl">
-            Selected work
+            Sample Projects
           </h2>
         </Reveal>
 

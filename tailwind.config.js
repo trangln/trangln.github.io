@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        paper: '#F6F4F1',
-        ink: '#211D1B',
-        muted: '#7A736C',
-        line: '#E4DFD9',
+        paper: 'rgb(var(--color-paper) / <alpha-value>)',
+        ink: 'rgb(var(--color-ink) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted) / <alpha-value>)',
+        line: 'rgb(var(--color-line) / <alpha-value>)',
         rose: {
           50: '#FAF3F1',
           100: '#F1E2DE',

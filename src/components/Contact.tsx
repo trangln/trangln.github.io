@@ -8,7 +8,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <Reveal>
-              <span className="text-[13px] font-medium uppercase tracking-widest2 text-rose-600">Contact</span>
+              <span className="text-[13px] font-medium uppercase tracking-widest2 text-rose-600">Get in touch</span>
               <h2 className="mt-5 font-display text-5xl leading-[1.02] text-ink sm:text-6xl">
                 Let's create something <span className="italic text-rose-500">meaningful.</span>
               </h2>
@@ -68,7 +68,7 @@ export default function Contact() {
 
         <div className="mt-24 flex flex-col-reverse items-start gap-4 border-t border-line pt-8 text-sm text-ink/65 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {profile.name}.</p>
-          <p>{profile.role} · {profile.location}</p>
+          <p>{profile.role}</p>
         </div>
       </div>
     </section>

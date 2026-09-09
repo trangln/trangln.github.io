@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { navLinks, profile } from '../data/content'
+import { navLinks } from '../data/content'
+import ThemeToggle from './ThemeToggle'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -31,10 +32,10 @@ export default function Nav() {
         <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 sm:px-8 lg:px-10">
           <a
             href="#top"
-            className="font-display text-base tracking-wide text-ink"
+            className="font-display text-2xl tracking-wide text-ink sm:text-[1.7rem]"
             onClick={handleLinkClick}
           >
-            {profile.name}
+            Trang <span className="italic text-rose-500">Ngoc Le</span>
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
@@ -53,28 +54,32 @@ export default function Nav() {
             >
               Get in touch
             </a>
+            <ThemeToggle />
           </nav>
 
-          <button
-            type="button"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
-          >
-            <span className="sr-only">Toggle menu</span>
-            <div className="flex h-4 w-6 flex-col justify-between">
-              <span
-                className={`block h-px w-full bg-ink transition-transform duration-300 ${open ? 'translate-y-[7px] rotate-45' : ''}`}
-              />
-              <span
-                className={`block h-px w-full bg-ink transition-opacity duration-300 ${open ? 'opacity-0' : 'opacity-100'}`}
-              />
-              <span
-                className={`block h-px w-full bg-ink transition-transform duration-300 ${open ? '-translate-y-[7px] -rotate-45' : ''}`}
-              />
-            </div>
-          </button>
+          <div className="flex items-center gap-3 lg:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+              className="relative z-50 flex h-10 w-10 items-center justify-center"
+            >
+              <span className="sr-only">Toggle menu</span>
+              <div className="flex h-4 w-6 flex-col justify-between">
+                <span
+                  className={`block h-px w-full bg-ink transition-transform duration-300 ${open ? 'translate-y-[7px] rotate-45' : ''}`}
+                />
+                <span
+                  className={`block h-px w-full bg-ink transition-opacity duration-300 ${open ? 'opacity-0' : 'opacity-100'}`}
+                />
+                <span
+                  className={`block h-px w-full bg-ink transition-transform duration-300 ${open ? '-translate-y-[7px] -rotate-45' : ''}`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </header>
 

@@ -1,6 +1,33 @@
+import { useState } from 'react'
 import { profile } from '../data/content'
 
+type NamePartProps = {
+  text: string
+  active: boolean
+  italic?: boolean
+  shift?: boolean
+  onEnter: () => void
+  onLeave: () => void
+}
+
+function NamePart({ text, active, italic = false, shift = false, onEnter, onLeave }: NamePartProps) {
+  return (
+    <span
+      className={`inline-block origin-left cursor-default transition-transform duration-300 ease-out ${
+        italic ? 'italic text-rose-500' : ''
+      } ${active ? 'scale-125' : ''} ${shift ? 'translate-x-[3vw] sm:translate-x-[2vw] lg:translate-x-[1.2vw]' : ''}`}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+    >
+      {text}
+    </span>
+  )
+}
+
 export default function Hero() {
+  const [hovered, setHovered] = useState<'first' | 'middle' | 'last' | null>(null)
+  const clear = () => setHovered(null)
+
   return (
     <section
       id="top"
@@ -12,16 +39,37 @@ export default function Hero() {
             className="animate-fade-up text-[13px] font-medium uppercase tracking-widest2 text-rose-600"
             style={{ animationDelay: '80ms' }}
           >
-            Marketing Executive — {profile.location}
+            Marketing Executive
           </p>
 
           <h1
             className="animate-fade-up mt-6 font-display text-[13vw] leading-[0.95] tracking-tight text-ink sm:text-[9vw] lg:text-[5.4vw]"
             style={{ animationDelay: '180ms' }}
           >
-            Trang
+            <NamePart
+              text="Trang"
+              active={hovered === 'first'}
+              onEnter={() => setHovered('first')}
+              onLeave={clear}
+            />
             <br />
-            <span className="italic text-rose-500">Ngoc Le</span>
+            <span className="inline-flex items-baseline">
+              <NamePart
+                text="Ngoc"
+                italic
+                active={hovered === 'middle'}
+                onEnter={() => setHovered('middle')}
+                onLeave={clear}
+              />
+              <NamePart
+                text={' Le'}
+                italic
+                active={hovered === 'last'}
+                shift={hovered === 'middle'}
+                onEnter={() => setHovered('last')}
+                onLeave={clear}
+              />
+            </span>
           </h1>
 
           <p
